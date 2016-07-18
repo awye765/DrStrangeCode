@@ -1,4 +1,5 @@
-# CodeCritic
+# DrStrangeCode
+Code review site
 
 ## Main Points
 1. User login
