@@ -2,25 +2,25 @@
 Code review site
 
 ## Main Points
-1. User login
+User login
 ```
 As a user
 So that I can get a code review
 I want to be able to sign up / sign in
 ```
-2. Code snippet upload
+Code snippet upload
 ```
 As a user
 So that I can get a code review
 I want to be able to upload a code snippet
 ```
-3. Snippet comments (using markdown to post code in comments)
+Snippet comments (using markdown to post code in comments)
 ```
 As a user
 So that I can get a code review
 I want other users to be comment on my snippet
 ```
-4. User profiles (my snippets / my comments)
+User profiles (my snippets / my comments)
 ```
 As a user
 So that I can see my snippets
