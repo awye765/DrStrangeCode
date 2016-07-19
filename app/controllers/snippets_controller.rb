@@ -77,7 +77,7 @@ class SnippetsController < ApplicationController
     end
 
     def owned_snippet
-      unless @snippet.user.id === current_user.id
+      unless @snippet.user.id == current_user.id
         flash[:alert] = "That Snippet does not belong to you!"
         redirect_to root_path
       end
