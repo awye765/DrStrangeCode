@@ -2,13 +2,13 @@
 # DrStrangeCode
 Code review site
 ## Main Points
-User login
+:white_check_mark: User login
 ```
 As a user
 So that I can get a code review
 I want to be able to sign up / sign in
 ```
-Code snippet upload
+:white_check_mark: Code snippet upload
 ```
 As a user
 So that I can get a code review
