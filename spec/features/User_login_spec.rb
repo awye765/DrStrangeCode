@@ -4,7 +4,7 @@ feature 'User authentication' do
 
   before do
     @user = create(:user)
-    @snippet = create(:snippet, name: 'Test', code: 'Test code')
+    @snippet = create(:snippet, name: 'Test', code: 'Test code', user_id: @user.id)
   end
 
   scenario "can log in from the index" do
