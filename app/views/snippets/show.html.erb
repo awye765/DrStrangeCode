@@ -10,6 +10,8 @@
   <%= raw @snippet.code %>
 </p>
 
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-<%= link_to 'Delete', snippet_path(@snippet), method: :delete %> |
+<if @snippet.user.id === current_user.id %>
+  <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+  <%= link_to 'Delete', snippet_path(@snippet), method: :delete %> |
+<% end %>
 <%= link_to 'Back', snippets_path %>
