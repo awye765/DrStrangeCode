@@ -35,14 +35,6 @@ feature 'Editing posts' do
     scenario "A stranger cannot edit a snippet that via url path" do
       visit "/snippets/#{@snippet_two.id}/edit"
       expect(page.current_path).to eq root_path
-      expect(page).to have_content("That post doesn't belong to you!")
-    end
-
-    scenario "It won't update a post without an attached image" do
-      find(:xpath, "//a[contains(@href,'snippets/#{@snippet_one.id}')]").click
-      click_link 'Edit Snippet'
-      click_button 'Update Snippet'
-
-      expect(page).to have_content("Something is wrong with your form!")
+      expect(page).to have_content("That Snippet does not belong to you!")
     end
 end

@@ -28,7 +28,7 @@ feature 'snippets' do
   end
 
   context 'showing Snippets' do
-    let!(:projectName) { Snippet.create(name:'project name', code:'Hello World!')}
+    let!(:projectName) { Snippet.create(name:'project name', code:'Hello World!', user_id:1)}
 
     scenario 'lets user view a Snippet' do
       visit '/snippets'
@@ -40,7 +40,7 @@ feature 'snippets' do
   end
 
   context 'editing Snippets' do
-    let!(:projectName) { Snippet.create(name:'project name', code:'Hello World!')}
+    let!(:projectName) { Snippet.create(name:'project name', code:'Hello World!', user_id:1)}
 
     scenario 'lets user edit a Snippet' do
       visit "/snippets/#{projectName.id}"
@@ -55,7 +55,7 @@ feature 'snippets' do
   end
 
   context 'deletes Snippets' do
-    let!(:projectName) { Snippet.create(name:'project name', code:'Hello World!')}
+    let!(:projectName) { Snippet.create(name:'project name', code:'Hello World!', user_id:1)}
 
     scenario 'removes a Snippet when a user clicks delete button' do
       visit "/snippets/#{projectName.id}"
