@@ -1,6 +1,6 @@
+![Alt text](https://raw.githubusercontent.com/elena-vi/DrStrangeCode/master/DrStrangeCode.png "DrStrangecode")
 # DrStrangeCode
 Code review site
-
 ## Main Points
 User login
 ```
