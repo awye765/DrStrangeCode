@@ -1,7 +1,14 @@
 
 require 'rails_helper'
 
+
 feature 'snippets' do
+
+  before do
+    @user = create(:user)
+    sign_in_with @user
+  end
+
   context 'no Snippets have been added' do
     scenario 'should display a prompt to add a Snippet' do
       visit '/snippets'

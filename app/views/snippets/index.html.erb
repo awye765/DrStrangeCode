@@ -7,12 +7,13 @@
 <% else %>
   <% @snippets.each do |snippet| %>
     <b>
-      <%= link_to snippet.name, snippet %> 
+      <%= link_to snippet.name, snippet %>
     </b>
   <% end %>
 <% end %>
 <br>
 <br>
 <br>
-
-<%= link_to 'Add a Snippet', new_snippet_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Add a Snippet', new_snippet_path %>
+<% end %>
