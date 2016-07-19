@@ -1,0 +1,15 @@
+<img src="https://robohash.org/<%= @user.user_name %>?set=set3">
+<h2><%= @user.user_name %></h2>
+<h3><%= @user.email %></h3>
+<% if @snippets.empty? %>
+  <h2>
+  	No Snippets yet, 
+  	<%= link_to 'Add a Snippet', new_snippet_path %>
+  </h2>
+<% else %>
+  <% @snippets.each do |snippet| %>
+    <h4>
+      <%= link_to snippet.name, snippet %> 
+    </h4>
+  <% end %>
+<% end %>

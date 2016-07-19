@@ -26,7 +26,6 @@ class SnippetsController < ApplicationController
   # POST /snippets
   # POST /snippets.json
   def create
-    p snippet_params
     @snippet = Snippet.new(snippet_params)
 
     respond_to do |format|

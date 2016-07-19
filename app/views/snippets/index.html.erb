@@ -6,9 +6,9 @@
   <h2>No Snippets yet</h2>
 <% else %>
   <% @snippets.each do |snippet| %>
-    <b>
+    <h4>
       <%= link_to snippet.name, snippet %> 
-    </b>
+    </h4>
   <% end %>
 <% end %>
 <br>
