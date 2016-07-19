@@ -10,6 +10,8 @@ class SnippetsController < ApplicationController
   # GET /snippets/1
   # GET /snippets/1.json
   def show
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    @snippet.code = markdown.render(@snippet.code)
   end
 
   # GET /snippets/new
@@ -24,6 +26,7 @@ class SnippetsController < ApplicationController
   # POST /snippets
   # POST /snippets.json
   def create
+    p snippet_params
     @snippet = Snippet.new(snippet_params)
 
     respond_to do |format|
@@ -69,6 +72,6 @@ class SnippetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
-      params.require(:snippet).permit(:name, :code)
+      params.require(:snippet).permit(:name, :code, :user_id)
     end
 end
