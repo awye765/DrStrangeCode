@@ -2,28 +2,17 @@
 
 <h1>Snippets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @snippets.each do |snippet| %>
-      <tr>
-        <td><%= snippet.name %></td>
-        <td><%= snippet.code %></td>
-        <td><%= link_to 'Show', snippet %></td>
-        <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
-        <td><%= link_to 'Destroy', snippet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<% if @snippets.empty? %>
+  <h2>No Snippets yet</h2>
+<% else %>
+  <% @snippets.each do |snippet| %>
+    <b>
+      <%= link_to snippet.name, snippet %> 
+    </b>
+  <% end %>
+<% end %>
+<br>
+<br>
 <br>
 
-<%= link_to 'New Snippet', new_snippet_path %>
+<%= link_to 'Add a Snippet', new_snippet_path %>
