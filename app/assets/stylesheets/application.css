@@ -1,15 +1,37 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+body {
+	font-family: arial
+}
+.flash {
+  padding: 8px 12px;
+}
+.success {
+	color: #33691e; /* Dark Green */
+	background: #c5e1a5; /* Light Green */
+}
+.error {
+	color: #b71c1c; /* Dark Red */
+	background: #ef9a9a; /* Light Red */
+}
+.alert {
+	color: #f57f17; /* Dark Yellow */
+	background: #fff59d; /* Light Yellow */
+}
+.notice {
+	color: #1a237e; /* Dark Blue */
+	background: #9fa8da; /* Light Blue */
+}

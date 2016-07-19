@@ -38,6 +38,7 @@ group :development, :test do
 	gem 'rspec-collection_matchers'
 	gem 'shoulda-matchers'
 	gem 'factory_girl_rails'
+	gem "nyan-cat-formatter"
 end
 
 group :development do
