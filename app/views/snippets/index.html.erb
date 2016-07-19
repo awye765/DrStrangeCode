@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Snippets</h1>
+
+<% if @snippets.empty? %>
+  <h2>No Snippets yet</h2>
+<% else %>
+  <% @snippets.each do |snippet| %>
+    <b>
+      <%= link_to snippet.name, snippet %> 
+    </b>
+  <% end %>
+<% end %>
+<br>
+<br>
+<br>
+
+<%= link_to 'Add a Snippet', new_snippet_path %>
