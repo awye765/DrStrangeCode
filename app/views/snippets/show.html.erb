@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @snippet.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @snippet.code %>
+</p>
+
+<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+<%= link_to 'Delete', snippet_path(@snippet), method: :delete %> |
+<%= link_to 'Back', snippets_path %>
