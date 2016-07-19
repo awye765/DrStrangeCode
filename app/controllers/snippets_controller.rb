@@ -10,6 +10,8 @@ class SnippetsController < ApplicationController
   # GET /snippets/1
   # GET /snippets/1.json
   def show
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    @snippet.code = markdown.render(@snippet.code)
   end
 
   # GET /snippets/new
