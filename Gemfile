@@ -22,6 +22,7 @@ group :development, :test do
 	gem 'factory_girl_rails'
 	gem "nyan-cat-formatter"
 	gem 'launchy'
+  gem 'omniauth-github'
 end
 
 group :development do
