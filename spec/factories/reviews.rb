@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :review do
-    review "MyText"
+    review "    MyText"
   end
 end
