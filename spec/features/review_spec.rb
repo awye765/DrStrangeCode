@@ -8,7 +8,7 @@ feature 'reviews' do
     @review = create(:review, snippet: @snippet)
  end
 
-  context 'Adding Reviews' do
+  xcontext 'Adding Reviews' do
 
     scenario 'No Reviews have been added yet' do
     	p @snippet.id
@@ -37,7 +37,5 @@ feature 'reviews' do
     end
 
   end
-  
+
 end
-
-
