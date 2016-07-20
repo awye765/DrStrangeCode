@@ -15,7 +15,7 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
 
-  # added secret key due to raise_no_secret_key error #Tom and Michael 
+  # added secret key due to raise_no_secret_key error #Tom and Michael
   config.secret_key = '-- secret key --'
 
   # Configure the class responsible to send e-mails.
@@ -275,4 +275,6 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :github, ENV["GITHUB_ID"], ENV["GITHUB_SECRET"], :scope => 'user:email'
+
 end
