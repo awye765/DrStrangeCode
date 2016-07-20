@@ -1,0 +1,17 @@
+
+<%= form_for [@snippet, @review] do |f| %>
+  
+  <div class="field">
+    <%= f.label :review %>
+    <%= f.text_field :review %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Leave Review' %>
+  </div>
+<% end %>
+
+
+
+<%= link_to 'Back', snippet_path(@snippet.id) %>

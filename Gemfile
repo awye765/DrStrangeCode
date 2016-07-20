@@ -21,6 +21,7 @@ group :development, :test do
 	gem 'shoulda-matchers'
 	gem 'factory_girl_rails'
 	gem "nyan-cat-formatter"
+	gem 'launchy'
 end
 
 group :development do
