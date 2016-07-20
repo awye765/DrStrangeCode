@@ -40,7 +40,7 @@ feature 'Deleting snippets' do
     end
   end
 
-  context 'Owner vs other user' do
+  context 'An owner of a snippet' do
     before do
       user_one = create(:user)
       user_two = create(:user, email: 'hi@hi.com',
@@ -53,7 +53,7 @@ feature 'Deleting snippets' do
       sign_in_with user_one
     end
 
-    scenario 'An owner can delete a snippet as the owner' do
+    scenario 'can delete a snippet that belongs to them' do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_one.id}')]").click
       expect(page).to have_content('Delete')
 
@@ -62,7 +62,7 @@ feature 'Deleting snippets' do
       expect(page).to have_content("Snippet was successfully destroyed.")
     end
 
-    scenario "A stranger cannot delete a snippet" do
+    scenario "delete a snippet that does not belong to them" do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_two.id}')]").click
       expect(page).to_not have_content('Delete')
     end
