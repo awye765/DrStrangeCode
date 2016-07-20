@@ -18,7 +18,6 @@ feature 'Editing snippets' do
       sign_in_with @user
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
 
-
       visit "/snippets/#{@snippet.id}/edit"
       fill_in('Name', :with => 'Edited Airplane Challenge')
       fill_in('Code', :with => 'Edited Test Code')
