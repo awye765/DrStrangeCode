@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature 'viewing snippets' do
+
   context 'A logged in user' do
-    scenario 'can view index posts' do
+    scenario 'can view snippets on the index page' do
       @user = create(:user)
       @snippet = create(:snippet, name: 'Test', code: 'Test code', user_id: @user.id)
 
@@ -14,7 +15,7 @@ feature 'viewing snippets' do
   end
 
   context 'A logged out user' do
-    scenario 'can view index posts' do
+    scenario 'can view snippets on the index page' do
       @user = create(:user)
       @snippet = create(:snippet, name: 'Test', code: 'Test code', user_id: @user.id)
 
