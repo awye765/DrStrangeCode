@@ -3,14 +3,23 @@ require 'rails_helper'
 feature 'Editing snippets' do
 
   context 'A logged in user' do
+    scenario 'can view the edit link' do
+      @user = create(:user)
+      sign_in_with @user
+      @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
+
+      visit "/snippets/#{@snippet.id}"
+
+      expect(page).to have_content 'Edit'
+    end
+
     scenario 'can edit a snippet' do
       @user = create(:user)
       sign_in_with @user
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
 
 
-      visit "/snippets/#{@snippet.id}"
-      click_link 'Edit'
+      visit "/snippets/#{@snippet.id}/edit"
       fill_in('Name', :with => 'Edited Airplane Challenge')
       fill_in('Code', :with => 'Edited Test Code')
       click_button('Update Snippet')
@@ -74,7 +83,7 @@ feature 'Editing snippets' do
 
     scenario "cannot edit someone elses snippet via url path" do
       visit "/snippets/#{@snippet_two.id}/edit"
-      
+
       expect(page.current_path).to eq root_path
       expect(page).to have_content("That Snippet does not belong to you!")
     end

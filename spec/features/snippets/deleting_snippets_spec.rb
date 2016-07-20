@@ -3,17 +3,6 @@ require 'rails_helper'
 feature 'Deleting snippets' do
 
   context 'A logged in user' do
-    scenario 'can view delete button' do
-      @user = create(:user)
-      sign_in_with @user
-      @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
-
-
-      visit "/snippets/#{@snippet.id}"
-
-      expect(page).to have_content 'Delete'
-    end
-
     scenario 'can delete a snippet' do
       @user = create(:user)
       sign_in_with @user
@@ -29,7 +18,7 @@ feature 'Deleting snippets' do
   end
 
   context 'A a logged out user' do
-    scenario 'cannot view delete button' do
+    scenario 'cannot view the delete button' do
       @user = create(:user)
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
 
@@ -60,9 +49,9 @@ feature 'Deleting snippets' do
       expect(page).to have_content("Snippet was successfully destroyed.")
     end
 
-    scenario "delete a snippet that does not belong to them" do
+    scenario "cannot delete a snippet that does not belong to them" do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_two.id}')]").click
-      
+
       expect(page).to_not have_content('Delete')
     end
   end
