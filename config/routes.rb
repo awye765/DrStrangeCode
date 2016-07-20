@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	root to: 'snippets#index'
 	resources :snippets
-	match 'users/:id', :to => "user#index", :via => :get
+	match 'users/:id', :to => "user#index", :via => :get, as: 'user'
 end
