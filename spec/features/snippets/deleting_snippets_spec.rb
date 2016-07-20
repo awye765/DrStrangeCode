@@ -55,8 +55,6 @@ feature 'Deleting snippets' do
 
     scenario 'can delete a snippet that belongs to them' do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_one.id}')]").click
-      expect(page).to have_content('Delete')
-
       click_link 'Delete'
 
       expect(page).to have_content("Snippet was successfully destroyed.")
@@ -64,6 +62,7 @@ feature 'Deleting snippets' do
 
     scenario "delete a snippet that does not belong to them" do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_two.id}')]").click
+      
       expect(page).to_not have_content('Delete')
     end
   end

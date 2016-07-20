@@ -34,7 +34,9 @@ feature 'Editing snippets' do
     scenario 'cannot visit the edit page through the url' do
       @user = create(:user)
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
+
       visit "/snippets/#{@snippet.id}/edit"
+
       expect(current_path).to eq '/snippets'
       expect(page).to have_content 'You need to be Signed in to Edit a Snippet!'
     end
@@ -55,8 +57,6 @@ feature 'Editing snippets' do
 
     scenario 'can edit their own snippet' do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_one.id}')]").click
-      expect(page).to have_content('Edit')
-
       click_link 'Edit'
       fill_in 'Name', with: "Airplane Challenge"
       fill_in 'Code', with: "```<h1>Hello World</h1>```"
@@ -68,11 +68,13 @@ feature 'Editing snippets' do
 
     scenario "cannot edit someone elses snippet" do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_two.id}')]").click
+
       expect(page).to_not have_content('Edit')
     end
 
     scenario "cannot edit someone elses snippet via url path" do
       visit "/snippets/#{@snippet_two.id}/edit"
+      
       expect(page.current_path).to eq root_path
       expect(page).to have_content("That Snippet does not belong to you!")
     end
