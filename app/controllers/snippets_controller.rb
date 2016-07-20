@@ -1,5 +1,7 @@
 class SnippetsController < ApplicationController
+
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
+  before_action :owned_snippet, only: [:edit, :update, :destroy]
 
   # GET /snippets
   # GET /snippets.json
@@ -26,7 +28,6 @@ class SnippetsController < ApplicationController
   # POST /snippets
   # POST /snippets.json
   def create
-    p snippet_params
     @snippet = Snippet.new(snippet_params)
 
     respond_to do |format|
@@ -73,5 +74,12 @@ class SnippetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
       params.require(:snippet).permit(:name, :code, :user_id)
+    end
+
+    def owned_snippet
+      unless @snippet.user.id == current_user.id
+        flash[:alert] = "That Snippet does not belong to you!"
+        redirect_to root_path
+      end
     end
 end

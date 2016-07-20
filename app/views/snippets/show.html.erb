@@ -10,7 +10,12 @@
   <%= raw @snippet.code %>
 </p>
 
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-<%= link_to 'Delete', snippet_path(@snippet), method: :delete %> |
+
+<% if current_user %>
+  <% if User.ownsSnippet?(@snippet, current_user) %>
+    <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+    <%= link_to 'Delete', snippet_path(@snippet), method: :delete %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', snippets_path %>
 <%= link_to 'Add Code Review', new_snippet_review_path(@snippet) %>
