@@ -7,9 +7,19 @@
   	<%= link_to 'Add a Snippet', new_snippet_path %>
   </h2>
 <% else %>
+	<h2>Posted Snippets</h2>
   <% @snippets.each do |snippet| %>
     <h4>
       <%= link_to snippet.name, snippet %> 
+    </h4>
+  <% end %>
+<% end %>
+
+<% if !@reviews.empty? %>
+	<h2>Reviews written on</h2>
+  <% @reviews.each do |review| %>
+    <h4>
+      <%= link_to review.name, review %> 
     </h4>
   <% end %>
 <% end %>
