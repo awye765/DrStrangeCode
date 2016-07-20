@@ -14,7 +14,7 @@ feature 'Deleting snippets' do
       expect(page).to have_content 'Delete'
     end
 
-    scenario 'can delete a Snippet' do
+    scenario 'can delete a snippet' do
       @user = create(:user)
       sign_in_with @user
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)

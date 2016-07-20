@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Editing snippets' do
 
   context 'A logged in user' do
-    scenario 'can edit a Snippet' do
+    scenario 'can edit a snippet' do
       @user = create(:user)
       sign_in_with @user
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
