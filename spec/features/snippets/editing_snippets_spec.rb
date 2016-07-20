@@ -40,7 +40,7 @@ feature 'Editing snippets' do
     end
   end
 
-  context 'tests for owners and non-owners' do
+  context 'An owner of a snippet' do
     before do
       user_one = create(:user)
       user_two = create(:user, email: 'hi@hi.com',
@@ -53,7 +53,7 @@ feature 'Editing snippets' do
       sign_in_with user_one
     end
 
-    scenario 'As the owner can edit a snippet as the owner' do
+    scenario 'can edit their own snippet' do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_one.id}')]").click
       expect(page).to have_content('Edit')
 
@@ -66,12 +66,12 @@ feature 'Editing snippets' do
       expect(page).to have_content("<h1>Hello World</h1>")
     end
 
-    scenario "A stranger  cannot edit a snippet" do
+    scenario "cannot edit someone elses snippet" do
       find(:xpath, "//a[contains(@href,'snippets/#{@snippet_two.id}')]").click
       expect(page).to_not have_content('Edit')
     end
 
-    scenario "A stranger cannot edit a snippet via url path" do
+    scenario "cannot edit someone elses snippet via url path" do
       visit "/snippets/#{@snippet_two.id}/edit"
       expect(page.current_path).to eq root_path
       expect(page).to have_content("That Snippet does not belong to you!")
