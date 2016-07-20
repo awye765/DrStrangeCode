@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :user_name, presence: true, length: {minimum: 4, maximum: 16}
   has_many :snippets, dependent: :destroy
-
+	has_many :reviews
+	
   def self.ownsSnippet?(snippet, current_user)
     snippet.user.id === current_user.id
   end

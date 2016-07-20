@@ -1,6 +1,6 @@
 
 <%= form_for [@snippet, @review] do |f| %>
-  
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="field">
     <%= f.label :review %>
     <%= f.text_field :review %>
