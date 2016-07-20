@@ -8,7 +8,7 @@ feature 'creating snippets' do
 
       visit '/'
 
-      expect(page).to have_content('Add a snippet')
+      expect(page).to have_content('Add a Snippet')
     end
 
     scenario 'can add a new snippet' do
@@ -18,7 +18,7 @@ feature 'creating snippets' do
       visit '/snippets/new'
       fill_in('Name', :with => 'Airplane Challenge')
       fill_in('Code', :with => 'Test Code')
-      click_button('Create snippet')
+      click_button('Create Snippet')
 
       expect(page).to have_content 'Airplane Challenge'
     end
