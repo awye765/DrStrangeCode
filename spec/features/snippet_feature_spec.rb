@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 
-feature 'snippets' do
+feature 'Snippets' do
 
   context 'no Snippets have been added' do
     scenario 'should display a prompt to add a Snippet' do
@@ -60,7 +60,7 @@ feature 'snippets' do
       expect(current_path).to eq "/snippets/#{@snippet.id}"
     end
 
-    scenario 'removes a Snippet when a user clicks delete button' do
+    scenario 'lets user delete a Snippet' do
       @user = create(:user)
       sign_in_with @user
       @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id)
