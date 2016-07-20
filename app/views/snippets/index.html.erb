@@ -14,5 +14,6 @@
 <br>
 <br>
 <br>
-
-<%= link_to 'Add a Snippet', new_snippet_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Add a Snippet', new_snippet_path %>
+<% end %>
