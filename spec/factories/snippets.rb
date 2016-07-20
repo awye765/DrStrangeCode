@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :snippet do
-    name "Captain Code"
-    code "<html>This is a html tag</html>"
+    name "My 1st Snippet"
+    code "    <html>This is a html tag</html>"
   end
 end

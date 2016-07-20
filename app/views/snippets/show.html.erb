@@ -10,6 +10,12 @@
   <%= raw @snippet.code %>
 </p>
 
+<p>
+  <strong>Reviews:</strong>
+  <% @reviews.each do |review| %>
+  	<%= raw review %><br>
+  <% end %>
+</p>
 
 <% if current_user %>
   <% if User.ownsSnippet?(@snippet, current_user) %>
