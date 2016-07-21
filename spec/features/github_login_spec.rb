@@ -2,51 +2,46 @@ require 'rails_helper'
 
 feature 'Github user authentication' do
 
+  before do
+    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
+    successful_github_login_setup
+    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+  end
+
   context 'A user with a github account' do
-    xscenario "can log in " do
-      visit '/'
-      click_link 'Log in'
-      expect(current_path).to eq '/users/sign_in'
-      click_link 'Sign in with GitHub'
+
+    scenario "can log in " do
+      github_login
 
       expect(page).to_not have_content('Sign up')
       expect(page).to have_content('Log out')
     end
 
-    xscenario 'can log out once logged in' do
-      @user = create(:user)
+    scenario 'can log out once logged in' do
+      github_login
 
-      sign_in_with @user
       click_link 'Log out'
 
       expect(page).to have_content('Signed out successfully')
     end
 
-    xscenario 'can view index posts without logging in' do
+    scenario 'can view index posts without logging in' do
       @user = create(:user)
       @snippet = create(:snippet, name: 'Test', code: 'Test code', user_id: @user.id)
 
-      visit '/'
+      github_login
 
       expect(page).to have_content('Test')
     end
 
-    xscenario 'cannot create a new post without logging in' do
+    scenario 'cannot create a new post without logging in' do
       @user = create(:user)
 
       visit '/'
 
       expect(page).not_to have_content('Add a Snippet')
     end
+
   end
 
-  context 'A user without an account' do
-    xscenario "can not log in " do
-      @user = build(:user)
-
-      sign_in_with @user
-
-      expect(page).to have_content('Invalid Email or password.')
-    end
-  end
 end
