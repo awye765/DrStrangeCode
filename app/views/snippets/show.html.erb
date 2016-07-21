@@ -1,21 +1,21 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>Snippet title:</strong>
   <%= @snippet.name %>
 </p>
 
-<p>
+<div>
   <strong>Code:</strong>
   <%= raw @snippet.code %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Reviews:</strong>
   <% @reviews.each do |review| %>
-  	<%= raw review %><br>
+  	<div>
+      <%= raw review %>
+    </div>
   <% end %>
-</p>
+</div>
 
 <% if current_user %>
   <% if User.ownsSnippet?(@snippet, current_user) %>

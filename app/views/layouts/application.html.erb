@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DrStrangeCode</title>
-    <%= csrf_meta_tags %>
+<head>
+<title>DrStrangeCode</title>
+<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <% if user_signed_in? %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log in", new_user_session_path %>
-      <%= link_to "Sign up", new_user_registration_path %>
-    <% end %>
+<body>
+<% flash.each do | name, msg | %>
+  <%= content_tag :div, msg, class: [:flash, alert_for(name)] %>
+  <% end %>
+  <%= link_to "Snippets", snippets_path %>
 
-  	<% flash.each do | name, msg | %>
-  		<%= content_tag :div, msg, class: [:flash, alert_for(name)] %>
-		<% end %>
+  <% if user_signed_in? %>
+  <%= link_to "My Profile", user_path(current_user.id) %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to "Log in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <% end %>
 
-    <%= yield %>
+  <%= yield %>
   </body>
-</html>
+  </html>

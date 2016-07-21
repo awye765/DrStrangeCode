@@ -6,9 +6,9 @@ class User < ApplicationRecord
          :omniauthable
 
   validates :user_name, presence: true, length: {minimum: 4, maximum: 16}
-
   has_many :snippets, dependent: :destroy
-
+	has_many :reviews
+	
   def self.ownsSnippet?(snippet, current_user)
     snippet.user.id === current_user.id
   end
@@ -18,6 +18,7 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.user_name = auth.info.name
       user.password = Devise.friendly_token[0,20]
     end
   end

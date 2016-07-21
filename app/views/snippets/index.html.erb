@@ -1,17 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Snippets</h1>
 
 <% if @snippets.empty? %>
   <h2>No Snippets yet</h2>
 <% else %>
   <% @snippets.each do |snippet| %>
-    <b>
-      <br>
-      <%= link_to snippet.name, snippet %>
-      <br>
-      <br>
-    </b>
+    <h4>
+      <%= link_to snippet.name, snippet %> 
+    </h4>
   <% end %>
 <% end %>
 <br>

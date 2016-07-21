@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160720151652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "snippet_id"
+    t.integer  "user_id"
     t.index ["snippet_id"], name: "index_reviews_on_snippet_id", using: :btree
   end
 
