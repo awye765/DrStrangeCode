@@ -6,7 +6,7 @@ RSpec.describe ReviewsController, type: :controller do
     scenario 'contact github' do
       github = Github.new
       p '======================'
-      response = github.repos.contents.get 'Harker16', 'Testrepo', 'test.rb', 108, accept: 'application/vnd.github.raw'
+      response = github.repos.contents.get 'Harker16', 'Testrepo', 'test.rb', accept: 'application/vnd.github.raw'
       p '======================='
       p response
       p '========================'
