@@ -4,10 +4,10 @@
   <h2>No Snippets yet</h2>
 <% else %>
   <% @snippets.each do |snippet| %>
-      <%= link_to(snippet) do %>
-			  <%= snippet.name %>
-			  <em>Created by: User @ 20:40</em>
-			<% end %>
+  	<div class="snippet_link">
+  		<%= link_to snippet.name, snippet %> 
+  		<em>Created at: 20:49 by Elena</em>
+  	</div>
   <% end %>
 <% end %>
 <br>
