@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redcarpet', '~> 3.3', '>= 3.3.4'
+gem 'github_api'
 
 group :development, :test do
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
