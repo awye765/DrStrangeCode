@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>Snippet title:</strong>
   <%= @snippet.name %>
 </p>
 
@@ -13,9 +11,8 @@
 <div>
   <strong>Reviews:</strong>
   <% @reviews.each do |review| %>
-  	<div>
-      <%= raw review %>
-      <em>By: <%= review.user_id %></em>
+  	<div id="review-">
+      <%= raw review.next %>
     </div>
   <% end %>
 </div>
