@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Github user authentication' do
 
   context 'A user with a github account' do
-    scenario "can log in " do
+    xscenario "can log in " do
       visit '/'
       click_link 'Log in'
       expect(current_path).to eq '/users/sign_in'
