@@ -1,7 +1,7 @@
 class SnippetsController < ApplicationController
 
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
-  before_action :owned_snippet, only: [:edit, :update, :destroy]
+  before_action :owned_snippet, only: [:update, :destroy]
 
   # GET /snippets
   # GET /snippets.json
@@ -19,11 +19,12 @@ class SnippetsController < ApplicationController
 
   # GET /snippets/new
   def new
-    @snippet = Snippet.new
+    current_user.nil? ? no_user_action('Add') : @snippet = Snippet.new
   end
 
   # GET /snippets/1/edit
   def edit
+    current_user.nil? ? no_user_action('Edit') : owned_snippet
   end
 
   # POST /snippets
@@ -82,5 +83,10 @@ class SnippetsController < ApplicationController
         flash[:alert] = "That Snippet does not belong to you!"
         redirect_to root_path
       end
+    end
+
+    def no_user_action(verb_for_message)
+      flash[:alert] =  'You need to be Signed in to ' + verb_for_message + ' a Snippet!'
+      redirect_to snippets_path
     end
 end
