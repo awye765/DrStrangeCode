@@ -18,7 +18,7 @@ body {
 	text-align: center
 }
 .flash {
-  padding: 8px 12px;
+	padding: 8px 12px;
 }
 .success {
 	color: #33691e; /* Dark Green */
@@ -38,29 +38,37 @@ body {
 }
 
 a {
-    margin: 10px 20px;
-    border: 1px solid #8c1e43;
-    padding: 10px 30px;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5.5px 40px;
-    background: #FF4081;
-    color: #fff;
-    -webkit-transition: 1s;
-    transition: 1s;
+	margin: 10px 20px;
+	border: 1px solid #8c1e43;
+	padding: 10px 30px;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 5.5px 40px;
+	background: #FF4081;
+	color: #fff;
+	-webkit-transition: 1s;
+	transition: 1s;
 }
 a:hover {
-    background: #3F51B5;
+	background: #3F51B5;
 }
 a em {
-    display: block;
+	display: block;
 }
 .profile_head img {
-  height: 109px;
-  background: beige;
-  border-radius: 100px;
-  padding: 10px;
+	height: 109px;
+	background: beige;
+	border-radius: 100px;
+	padding: 10px;
 }
 .profile_info {
-    display: inline-block;
+	display: inline-block;
+}
+pre code {
+  padding: 20px;
+}
+code {
+  background: #d8d6d3;
+  padding: 0px 5px;
+  display: inline-block;
 }
