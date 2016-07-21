@@ -6,7 +6,11 @@ class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.json
   def index
-    @snippets = Snippet.all
+    if params[:tag]
+      @snippets = Snippet.tagged_with(params[:tag])
+    else
+      @snippets = Snippet.all
+    end
   end
 
   # GET /snippets/1
@@ -74,7 +78,7 @@ class SnippetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
-      params.require(:snippet).permit(:name, :code, :user_id)
+      params.require(:snippet).permit(:name, :code, :user_id, :tag_list)
     end
 
     def owned_snippet

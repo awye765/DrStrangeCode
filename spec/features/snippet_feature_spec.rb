@@ -73,4 +73,38 @@ feature 'Snippets' do
       expect(page).not_to have_content 'project name'
     end
   end
+
+  context 'lets user add subject tags to their snippet' do
+
+    scenario 'user can add multiple tags when creating a new snippet & see them displayed' do
+      @user = create(:user)
+      sign_in_with @user
+      @snippet = create(:snippet, name: 'Airplane Challenge', code: '    Test Code', user_id: @user.id, tag_list: 'rails, ruby, airport')
+      visit '/snippets'
+      expect(page).to have_content 'airport, ruby, rails'
+    end
+
+    scenario 'all added tags should be displayed on the main page' do
+      @user = create(:user)
+      sign_in_with @user
+      @snippet = create(:snippet, name: 'Airplane Challenge', code: '    Test Code', user_id: @user.id, tag_list: 'rails, ruby, airport')
+      
+      visit '/snippets'
+      expect(page).to have_content('airport', count: 2)
+      expect(page).to_not have_content('airport', count: 5)
+    end
+
+    scenario 'edited existing tag should display on the main page' do
+      @user = create(:user)
+      sign_in_with @user
+      @snippet = create(:snippet, name: 'project name', code: 'Hello World!', user_id: @user.id, tag_list: 'tama, kitty')
+      visit "/snippets/#{@snippet.id}"
+      click_link 'Edit'
+      fill_in('Tags', :with => 'tama, kat')
+      click_button('Update Snippet')
+      visit '/snippets'
+      expect(page).to have_content('kat', count: 2)
+      expect(page).to_not have_content('kat', count: 3)
+    end
+  end
 end
