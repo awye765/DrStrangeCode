@@ -6,7 +6,29 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'helpers/github_login_helper'
+require 'helpers/omniauth_test_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
+
+# OmniAuth.config.test_mode = true
+# # Turns on "test mode" for Omniauth.  All requests to Omniauth in testing will
+# # be short circuited to use the mock authentication hash described below.
+#
+# omniauth_hash = {
+#   provider: 'github',
+#   uid: '12345',
+#   info: {
+#     email: 'info@gmail.com',
+#     user_name: 'Test User'
+#   }
+#   # :password => 'password'
+# }
+#
+# OmniAuth.config.add_mock(:github, omniauth_hash)
+#
+# OmniAuth.config.on_failure = Proc.new { |env|
+#   OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+# }
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -40,6 +62,7 @@ end
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include AuthHelpers, type: :feature
+  config.include OmniAuthTestHelper, type: :feature
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
