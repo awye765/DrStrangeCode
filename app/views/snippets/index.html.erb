@@ -10,9 +10,6 @@
   	</div>
   <% end %>
 <% end %>
-<br>
-<br>
-<br>
 <% if user_signed_in? %>
-  <%= link_to 'Add a Snippet', new_snippet_path %>
+  <%= link_to 'Add a Snippet', new_snippet_path, :class => "btn" %>
 <% end %>
