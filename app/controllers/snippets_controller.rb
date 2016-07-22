@@ -12,9 +12,9 @@ class SnippetsController < ApplicationController
   # GET /snippets/1
   # GET /snippets/1.json
   def show
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
-    @snippet.code = markdown.render(@snippet.code)
-    @reviews = @snippet.reviews.map {|r| markdown.render(r.review)}
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    @code = @snippet.code
+    @reviews = @snippet.reviews
   end
 
   # GET /snippets/new
@@ -66,7 +66,9 @@ class SnippetsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  # def get_author snippet 
+  #   User.find_by(id: snippet.user_id).user_name
+  # end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_snippet

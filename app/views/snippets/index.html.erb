@@ -6,7 +6,11 @@
   <% @snippets.each do |snippet| %>
   	<div class="snippet_link">
   		<%= link_to snippet.name, snippet %> 
-  		<em>Created at: 20:49 by Elena</em>
+  		<em>
+  			Created on
+  			<%= snippet.created_at.localtime.to_s(:long) %> by
+  			<%= link_to User.find_by(id: snippet.user_id).user_name, user_path(snippet.user_id) %>
+  		</em>
   	</div>
   <% end %>
 <% end %>

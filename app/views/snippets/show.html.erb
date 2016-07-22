@@ -1,27 +1,39 @@
-<p>
-  <strong>Snippet title:</strong>
-  <%= @snippet.name %>
-</p>
-
 <div>
-  <strong>Code:</strong>
-  <%= raw @snippet.code %>
+  <h2><%= @snippet.name %></h2>
+  <em>
+    Created on
+    <%= @snippet.created_at.localtime.to_s(:long) %> by
+    <%= link_to User.find_by(id: @snippet.user_id).user_name, user_path(@snippet.user_id) %>
+  </em>
 </div>
 
 <div>
-  <strong>Reviews:</strong>
-  <% @reviews.each do |review| %>
-  	<div>
-      <%= raw review %>
-    </div>
+  <h2>Code to be reviewed:</h2>
+  <%= raw @markdown.render(@code) %>
+</div>
+
+<div>
+  <% if @reviews.empty? %>
+    <h4>No reviews yet</h4>
+  <% else %>
+    <strong>Reviews:</strong>
+    <% @reviews.each do |review| %>
+    	<div class="review">
+        <%= raw @markdown.render(review.review) %>
+        <em>
+          Created on
+          <%= review.created_at.localtime.to_s(:long) %> by
+          <%= link_to User.find_by(id: review.user_id).user_name, user_path(review.user_id) %>
+        </em>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
 <% if current_user %>
   <% if User.ownsSnippet?(@snippet, current_user) %>
-    <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-    <%= link_to 'Delete', snippet_path(@snippet), method: :delete %> |
+    <%= link_to 'Edit', edit_snippet_path(@snippet), :class => "btn" %> |
+    <%= link_to 'Delete', snippet_path(@snippet), method: :delete, :class => "btn" %> |
   <% end %>
 <% end %>
-<%= link_to 'Back', snippets_path %>
-<%= link_to 'Add Code Review', new_snippet_review_path(@snippet) %>
+<%= link_to 'Add Code Review', new_snippet_review_path(@snippet), :class => "btn" %>
