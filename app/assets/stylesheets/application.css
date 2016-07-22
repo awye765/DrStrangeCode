@@ -52,7 +52,16 @@ hr {
   vertical-align: middle;
 
 }
-
+a {
+	color: black;
+	text-decoration: none;
+}
+a:visited {
+	color: black
+}
+a:hover {
+	color: #3F51B5
+}
 pre code {
 	padding: 20px;
 }
