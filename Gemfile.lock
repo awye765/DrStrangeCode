@@ -244,6 +244,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   nyan-cat-formatter
+  omniauth (~> 1.3, >= 1.3.1)
   omniauth-github
   pg (~> 0.18)
   puma (~> 3.0)

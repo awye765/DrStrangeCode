@@ -11,6 +11,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redcarpet', '~> 3.3', '>= 3.3.4'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
+gem 'omniauth-github'
 
 group :development, :test do
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -22,7 +24,6 @@ group :development, :test do
 	gem 'factory_girl_rails'
 	gem "nyan-cat-formatter"
 	gem 'launchy'
-  gem 'omniauth-github'
 end
 
 group :development do
