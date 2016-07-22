@@ -1,6 +1,10 @@
-<img src="https://robohash.org/<%= @user.user_name %>?set=set3">
-<h2><%= @user.user_name %></h2>
-<h3><%= @user.email %></h3>
+<div class="profile_head">
+  <img src="https://robohash.org/<%= @user.user_name %>?set=set3">
+  <div class="profile_info">
+    <h2><%= @user.user_name %></h2>
+    <h3><%= @user.email %></h3>
+  </div>
+</div>
 <% if @snippets.empty? %>
   <h2>
   	No Snippets yet, 

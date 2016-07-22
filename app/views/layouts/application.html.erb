@@ -9,19 +9,28 @@
 </head>
 
 <body>
-<% flash.each do | name, msg | %>
-  <%= content_tag :div, msg, class: [:flash, alert_for(name)] %>
-  <% end %>
-  <%= link_to "Snippets", snippets_path %>
 
   <% if user_signed_in? %>
-  <%= link_to "My Profile", user_path(current_user.id) %>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    <div class="header_link">
+      <%= link_to(user_path(current_user.id)) do %>
+        <img src="https://robohash.org/<%= current_user.user_name %>?set=set3" class="icon">
+        <%= current_user.user_name %>
+      <% end %>
+    </div>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "header_link" %>
   <% else %>
-  <%= link_to "Log in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Log in", new_user_session_path, :class => "header_link" %>
+    <%= link_to "Sign up", new_user_registration_path, :class => "header_link" %>
+  <% end %>
+
+  <%= link_to "Snippets", snippets_path, :class => "header_link" %>
+  
+  <hr>
+  
+  <% flash.each do | name, msg | %>
+    <%= content_tag :div, msg, class: [:flash, alert_for(name)] %>
   <% end %>
 
   <%= yield %>
-  </body>
-  </html>
+</body>
+</html>
